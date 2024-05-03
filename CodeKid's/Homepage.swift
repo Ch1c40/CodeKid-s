@@ -14,8 +14,8 @@ struct BlueButton: ButtonStyle {
             .bold()
             .padding()
             .frame(width: 400)
-            .foregroundStyle(.white)
-            .background(Color.blue)
+            .foregroundStyle(.black)
+            .background(Color.white)
             .cornerRadius(25)
     }
 }
@@ -24,26 +24,30 @@ struct MenuScreen: View {
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        VStack{
-            Button("CONFIGURAÇÃO") {
-                
+        ZStack{
+            Color.black.opacity(0.9).ignoresSafeArea()
+            VStack{
+                Button("CONFIGURAÇÃO") {
+                    
+                }
+                Button("PONTUAÇÃO") {
+                    
+                }
+                Button("SAIR") {
+                    
+                }
             }
-            Button("PONTUAÇÃO") {
-                
-            }
-            Button("SAIR") {
-                
-            }
-        }
-        .buttonStyle(BlueButton())
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .overlay(alignment: .topTrailing) {
+            .buttonStyle(BlueButton())
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .overlay(alignment: .topTrailing) {
                 Image(systemName: "xmark.circle.fill")
                     .font(.system(size: 50))
+                    .foregroundStyle(.white)
                     .onTapGesture {
                         dismiss()
                     }
                     .padding()
+            }
         }
     }
 }
@@ -62,54 +66,40 @@ struct Homepage: View {
                         .font(.system(size: 25))
                         .padding([.horizontal], 430)
                     ZStack{
-                        Image(systemName: "line.3.horizontal")
-                            .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                         Circle()
                             .frame(width: 44)
-                            .foregroundStyle(.gray.opacity(0.2))
+                            .foregroundStyle(.tint)
                             .onTapGesture {
                                 showingSheet.toggle()
                             }
                             .sheet(isPresented: $showingSheet) {
                                 MenuScreen()
                             }
+                        Image(systemName: "line.3.horizontal")
+                            .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                     }
                 }
-                .padding([.bottom], 100)
+                .padding([.bottom], 20)
                 Text("Escolha o Mundo para começar")
-                    .font(.system(size: 32))
+                    .font(.system(size: 48))
                     .bold()
-                    .padding([.bottom], 40)
-                HStack{
-                    VStack{
-                        Circle()
-                            .frame(width: 200)
-                        Text("Praia")
+                    .padding([.bottom], -20)
+                VStack{
+                    NavigationLink {
+                        Fase1()
+                    } label: {
+                        Image("praia")
+                            .resizable()
+                            .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+                            .frame(width: 350, height: 350)
                             .padding()
-                            .bold()
-                            .font(.title)
-                        
+                            .shadow(radius: 7)
                     }
-                    .padding(50)
-                    VStack{
-                        Circle()
-                            .frame(width: 200)
-                        Text("Floresta")
-                            .padding()
-                            .bold()
-                            .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                    }
-                    .padding(50)
-                    VStack{
-                        Circle()
-                            .frame(width: 200)
-                        Text("Cidade")
-                            .padding()
-                            .bold()
-                            .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                    }
-                    .padding(50)
+                    Text("Praia")
+                        .bold()
+                        .font(.system(size: 43))
                 }
+                .padding(50)
             }
         }
     }
