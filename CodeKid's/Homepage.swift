@@ -55,6 +55,7 @@ struct MenuScreen: View {
 struct Homepage: View {
     
     @State private var showingSheet = false
+    
     var nome: String
     
     var body: some View {
@@ -64,7 +65,7 @@ struct Homepage: View {
                 HStack{
                     Text("Bem vindo, \(nome)!")
                         .font(.system(size: 25))
-                        .padding([.horizontal], 430)
+                        .padding([.horizontal], 460)
                     ZStack{
                         Circle()
                             .frame(width: 44)
@@ -86,14 +87,14 @@ struct Homepage: View {
                     .padding([.bottom], -20)
                 VStack{
                     NavigationLink {
-                        Fase1()
+                        SelecaoFase()
                     } label: {
                         Image("praia")
                             .resizable()
                             .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
                             .frame(width: 350, height: 350)
                             .padding()
-                            .shadow(radius: 7)
+                            .shadow(radius: 10)
                     }
                     Text("Praia")
                         .bold()
@@ -102,6 +103,7 @@ struct Homepage: View {
                 .padding(50)
             }
         }
+        .navigationBarBackButtonHidden()
     }
 }
 

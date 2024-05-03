@@ -13,6 +13,7 @@ struct Fase1: View {
         ZStack{
             Image("Background1")
                 .blur(radius: 5.0)
+                .ignoresSafeArea()
             VStack{
                 HStack{
                     Rectangle()

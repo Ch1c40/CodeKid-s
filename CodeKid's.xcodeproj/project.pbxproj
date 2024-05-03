@@ -10,6 +10,11 @@
 		2268DF572BE1586B00A15D3E /* IdadePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2268DF562BE1586B00A15D3E /* IdadePage.swift */; };
 		2268DF592BE1639400A15D3E /* Homepage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2268DF582BE1639400A15D3E /* Homepage.swift */; };
 		228413C52BE55BFF0099DCAF /* Fase1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228413C42BE55BFF0099DCAF /* Fase1.swift */; };
+		228413C72BE56AF00099DCAF /* SelecaoFase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228413C62BE56AF00099DCAF /* SelecaoFase.swift */; };
+		228413C92BE570C80099DCAF /* Fase2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228413C82BE570C80099DCAF /* Fase2.swift */; };
+		228413CB2BE570D10099DCAF /* Fase3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228413CA2BE570D10099DCAF /* Fase3.swift */; };
+		228413CD2BE570D70099DCAF /* Fase4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228413CC2BE570D70099DCAF /* Fase4.swift */; };
+		228413CF2BE570DD0099DCAF /* Fase5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228413CE2BE570DD0099DCAF /* Fase5.swift */; };
 		22C2942E2BDC34F80024D0F7 /* TelaInicial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C2942D2BDC34F80024D0F7 /* TelaInicial.swift */; };
 		22CAF73D2BD8168800A4797F /* CodeKid_sApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CAF73C2BD8168800A4797F /* CodeKid_sApp.swift */; };
 		22CAF73F2BD8168800A4797F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CAF73E2BD8168800A4797F /* ContentView.swift */; };
@@ -21,6 +26,11 @@
 		2268DF562BE1586B00A15D3E /* IdadePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdadePage.swift; sourceTree = "<group>"; };
 		2268DF582BE1639400A15D3E /* Homepage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homepage.swift; sourceTree = "<group>"; };
 		228413C42BE55BFF0099DCAF /* Fase1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fase1.swift; sourceTree = "<group>"; };
+		228413C62BE56AF00099DCAF /* SelecaoFase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelecaoFase.swift; sourceTree = "<group>"; };
+		228413C82BE570C80099DCAF /* Fase2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fase2.swift; sourceTree = "<group>"; };
+		228413CA2BE570D10099DCAF /* Fase3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fase3.swift; sourceTree = "<group>"; };
+		228413CC2BE570D70099DCAF /* Fase4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fase4.swift; sourceTree = "<group>"; };
+		228413CE2BE570DD0099DCAF /* Fase5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fase5.swift; sourceTree = "<group>"; };
 		22C2942D2BDC34F80024D0F7 /* TelaInicial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelaInicial.swift; sourceTree = "<group>"; };
 		22CAF7392BD8168800A4797F /* CodeKid's.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CodeKid's.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22CAF73C2BD8168800A4797F /* CodeKid_sApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeKid_sApp.swift; sourceTree = "<group>"; };
@@ -40,6 +50,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		228413D02BE571400099DCAF /* Fases */ = {
+			isa = PBXGroup;
+			children = (
+				228413CE2BE570DD0099DCAF /* Fase5.swift */,
+				228413CC2BE570D70099DCAF /* Fase4.swift */,
+				228413CA2BE570D10099DCAF /* Fase3.swift */,
+				228413C82BE570C80099DCAF /* Fase2.swift */,
+				228413C42BE55BFF0099DCAF /* Fase1.swift */,
+			);
+			path = Fases;
+			sourceTree = "<group>";
+		};
 		22CAF7302BD8168800A4797F = {
 			isa = PBXGroup;
 			children = (
@@ -64,7 +86,8 @@
 				22C2942D2BDC34F80024D0F7 /* TelaInicial.swift */,
 				2268DF562BE1586B00A15D3E /* IdadePage.swift */,
 				2268DF582BE1639400A15D3E /* Homepage.swift */,
-				228413C42BE55BFF0099DCAF /* Fase1.swift */,
+				228413C62BE56AF00099DCAF /* SelecaoFase.swift */,
+				228413D02BE571400099DCAF /* Fases */,
 				22CAF7422BD8168900A4797F /* Assets.xcassets */,
 				22CAF7442BD8168900A4797F /* Preview Content */,
 			);
@@ -93,8 +116,11 @@
 			buildRules = (
 			);
 			dependencies = (
+				228413E92BE57B760099DCAF /* PBXTargetDependency */,
 			);
 			name = "CodeKid's";
+			packageProductDependencies = (
+			);
 			productName = "CodeKid's";
 			productReference = 22CAF7392BD8168800A4797F /* CodeKid's.app */;
 			productType = "com.apple.product-type.application";
@@ -123,6 +149,9 @@
 				Base,
 			);
 			mainGroup = 22CAF7302BD8168800A4797F;
+			packageReferences = (
+				228413E22BE579300099DCAF /* XCRemoteSwiftPackageReference "swiftui-lint" */,
+			);
 			productRefGroup = 22CAF73A2BD8168800A4797F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -149,16 +178,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				228413C72BE56AF00099DCAF /* SelecaoFase.swift in Sources */,
 				228413C52BE55BFF0099DCAF /* Fase1.swift in Sources */,
 				22C2942E2BDC34F80024D0F7 /* TelaInicial.swift in Sources */,
+				228413CD2BE570D70099DCAF /* Fase4.swift in Sources */,
+				228413CF2BE570DD0099DCAF /* Fase5.swift in Sources */,
+				228413CB2BE570D10099DCAF /* Fase3.swift in Sources */,
 				22CAF73F2BD8168800A4797F /* ContentView.swift in Sources */,
 				2268DF572BE1586B00A15D3E /* IdadePage.swift in Sources */,
 				2268DF592BE1639400A15D3E /* Homepage.swift in Sources */,
 				22CAF73D2BD8168800A4797F /* CodeKid_sApp.swift in Sources */,
+				228413C92BE570C80099DCAF /* Fase2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		228413E92BE57B760099DCAF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 228413E82BE57B760099DCAF /* SwiftUILintPlugin */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		22CAF7472BD8168900A4797F /* Debug */ = {
@@ -356,6 +397,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		228413E22BE579300099DCAF /* XCRemoteSwiftPackageReference "swiftui-lint" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mateusrodriguesxyz/swiftui-lint";
+			requirement = {
+				branch = beta;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		228413E82BE57B760099DCAF /* SwiftUILintPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 228413E22BE579300099DCAF /* XCRemoteSwiftPackageReference "swiftui-lint" */;
+			productName = "plugin:SwiftUILintPlugin";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 22CAF7312BD8168800A4797F /* Project object */;
 }

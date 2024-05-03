@@ -9,7 +9,57 @@ import SwiftUI
 
 struct SelecaoFase: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack{
+            Image("Background1").ignoresSafeArea()
+                .blur(radius: 5.0)
+            HStack{
+                NavigationLink {
+                    Fase1()
+                } label: {
+                    Circle()
+                        .frame(width: 100)
+                        .foregroundStyle(.black)
+                        .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                        .padding()
+                }
+                NavigationLink {
+                    Fase2()
+                } label: {
+                    Circle()
+                        .frame(width: 100)
+                        .foregroundStyle(.black)
+                        .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                        .padding()
+                }
+                NavigationLink {
+                    Fase3()
+                } label: {
+                    Circle()
+                        .frame(width: 100)
+                        .foregroundStyle(.black)
+                        .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                        .padding()
+                }
+                NavigationLink {
+                    Fase4()
+                } label: {
+                    Circle()
+                        .frame(width: 100)
+                        .foregroundStyle(.black)
+                        .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                        .padding()
+                }
+                NavigationLink {
+                    Fase5()
+                } label: {
+                    Circle()
+                        .frame(width: 100)
+                        .foregroundStyle(.black)
+                        .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                        .padding()
+                }
+            }
+        }
     }
 }
 
