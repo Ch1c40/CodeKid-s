@@ -6,3 +6,10 @@
 //
 
 import Foundation
+struct TartarugaViewModel{
+    var tartaruga = Tartaruga(
+        startingPosition: 0,
+        picture: "tartaruga",
+        walk: 1,
+    estrelas: 2)
+}

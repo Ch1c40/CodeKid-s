@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		2268DF572BE1586B00A15D3E /* IdadePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2268DF562BE1586B00A15D3E /* IdadePage.swift */; };
 		2268DF592BE1639400A15D3E /* Homepage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2268DF582BE1639400A15D3E /* Homepage.swift */; };
+		227C24F62BF3F01500F17E10 /* Tartaruga.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227C24F52BF3F01500F17E10 /* Tartaruga.swift */; };
+		227C24FA2BF3F03800F17E10 /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227C24F92BF3F03800F17E10 /* Move.swift */; };
+		227C24FE2BF3F05A00F17E10 /* TartarugaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227C24FD2BF3F05A00F17E10 /* TartarugaViewModel.swift */; };
 		228413C52BE55BFF0099DCAF /* Fase1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228413C42BE55BFF0099DCAF /* Fase1.swift */; };
 		228413C72BE56AF00099DCAF /* SelecaoFase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228413C62BE56AF00099DCAF /* SelecaoFase.swift */; };
 		228413C92BE570C80099DCAF /* Fase2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228413C82BE570C80099DCAF /* Fase2.swift */; };
@@ -25,6 +28,9 @@
 /* Begin PBXFileReference section */
 		2268DF562BE1586B00A15D3E /* IdadePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdadePage.swift; sourceTree = "<group>"; };
 		2268DF582BE1639400A15D3E /* Homepage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homepage.swift; sourceTree = "<group>"; };
+		227C24F52BF3F01500F17E10 /* Tartaruga.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tartaruga.swift; sourceTree = "<group>"; };
+		227C24F92BF3F03800F17E10 /* Move.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
+		227C24FD2BF3F05A00F17E10 /* TartarugaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TartarugaViewModel.swift; sourceTree = "<group>"; };
 		228413C42BE55BFF0099DCAF /* Fase1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fase1.swift; sourceTree = "<group>"; };
 		228413C62BE56AF00099DCAF /* SelecaoFase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelecaoFase.swift; sourceTree = "<group>"; };
 		228413C82BE570C80099DCAF /* Fase2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fase2.swift; sourceTree = "<group>"; };
@@ -65,6 +71,9 @@
 		22CAF7302BD8168800A4797F = {
 			isa = PBXGroup;
 			children = (
+				227C24F92BF3F03800F17E10 /* Move.swift */,
+				227C24F52BF3F01500F17E10 /* Tartaruga.swift */,
+				227C24FD2BF3F05A00F17E10 /* TartarugaViewModel.swift */,
 				22CAF73B2BD8168800A4797F /* CodeKid's */,
 				22CAF73A2BD8168800A4797F /* Products */,
 			);
@@ -178,8 +187,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				227C24FE2BF3F05A00F17E10 /* TartarugaViewModel.swift in Sources */,
 				228413C72BE56AF00099DCAF /* SelecaoFase.swift in Sources */,
+				227C24F62BF3F01500F17E10 /* Tartaruga.swift in Sources */,
 				228413C52BE55BFF0099DCAF /* Fase1.swift in Sources */,
+				227C24FA2BF3F03800F17E10 /* Move.swift in Sources */,
 				22C2942E2BDC34F80024D0F7 /* TelaInicial.swift in Sources */,
 				228413CD2BE570D70099DCAF /* Fase4.swift in Sources */,
 				228413CF2BE570DD0099DCAF /* Fase5.swift in Sources */,

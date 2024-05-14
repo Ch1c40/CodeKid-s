@@ -19,6 +19,7 @@ struct Stage: Identifiable {
 
 struct SelecaoFase: View {
     
+    
     let stages: [Stage] = [
         Stage(name: "Fase 1"),
         Stage(name: "Fase 2"),
