@@ -7,31 +7,28 @@
 
 import SwiftUI
 
-struct Stage: Identifiable {
-    let id: UUID
-    let name: String
-    
-    init(name: String) {
-        self.id = UUID()
-        self.name = name
-    }
-}
-
 struct SelecaoFase: View {
-    
-    
-    let stages: [Stage] = [
-        Stage(name: "Fase 1"),
-        Stage(name: "Fase 2"),
-        Stage(name: "Fase 3"),
-        Stage(name: "Fase 4"),
-        Stage(name: "Fase 5")
+        
+    @State var stages = [
+        TartarugaViewModel(name: "Fase 1", stars: [2, 3, 4, 5, 18]),
+        TartarugaViewModel(name: "Fase 2", stars: [2, 3, 4, 5, 18]),
+        TartarugaViewModel(name: "Fase 3", stars: [2, 3, 4, 5, 18]),
+        TartarugaViewModel(name: "Fase 4", stars: [2, 3, 4, 5, 18]),
+        TartarugaViewModel(name: "Fase 5", stars: [2, 3, 4, 5, 18])
     ]
     
     func nextView(from stageName: String) -> some View {
         switch stageName {
         case "Fase 1":
-            return AnyView(Fase1())
+            return AnyView(Fase1(viewModel: $stages[0]))
+//        case "Fase 2":
+//            return AnyView(Fase2(viewModel: $stages[1]))
+//        case "Fase 3":
+//            return AnyView(Fase3(viewModel: $stages[2]))
+//        case "Fase 4":
+//            return AnyView(Fase4(viewModel: $stages[3]))
+//        case "Fase 5":
+//            return AnyView(Fase5(viewModel: $stages[4]))
         case "Fase 2":
             return AnyView(Fase2())
         case "Fase 3":
@@ -64,9 +61,9 @@ struct SelecaoFase: View {
                                 .font(.system(size: 50))
                                 .foregroundStyle(Color.black)
                                 .bold()
-                            HStack{
-                                ForEach(0..<3){ _ in
-                                    Image(systemName: "star")
+                            HStack {
+                                ForEach(0..<3) { indexStar in
+                                    Image(systemName: indexStar < stage.tartaruga.estrelas ? "star.fill" : "star")
                                         .foregroundStyle(.black)
                                         .font(.system(size: 30))
                                 }

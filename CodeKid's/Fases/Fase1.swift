@@ -10,7 +10,7 @@ import SwiftUI
 
 struct Fase1: View {
     
-    @State var viewModel = TartarugaViewModel()
+    @Binding var viewModel: TartarugaViewModel
     
     @State var moves: [Move] = []
     
@@ -20,7 +20,7 @@ struct Fase1: View {
                 .blur(radius: 5.0)
                 .ignoresSafeArea()
                 .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity)
-
+            
             Game(viewModel: $viewModel, stars: $viewModel.stars)
             ButtonPlay(viewModel: $viewModel, Moves: $moves)
             Buttons(Moves: $moves)
@@ -112,10 +112,18 @@ struct ButtonPlay: View {
                         withAnimation(.linear(duration: 1)) {
                             viewModel.tartaruga.y += move.dy
                         }
+                        
                     }
-                    viewModel.tartaruga.estrelas += 1
+                    
+                    if viewModel.standsInStar() {
+                        viewModel.tartaruga.estrelas += 1
+                    }
+                    
                     try? await Task.sleep(for: .seconds(1))
                 }
+                
+                viewModel.tartaruga.x = 0
+                viewModel.tartaruga.y = 0
             }
         }, label: {
             Image(systemName: "play.circle.fill")
@@ -188,6 +196,6 @@ struct Historic: View {
 
 #Preview {
     NavigationStack{
-        Fase1()
+        Fase1(viewModel: .constant(TartarugaViewModel(name: "Fase 1", stars: [2,3,4])))
     }
 }
