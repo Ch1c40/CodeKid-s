@@ -10,8 +10,6 @@ import SwiftUI
 
 struct Homepage: View {
     
-    @State private var showingSheet = false
-    
     var nome: String
     
     var body: some View {

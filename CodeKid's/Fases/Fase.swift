@@ -24,12 +24,10 @@ struct Fase: View {
             Game(viewModel: $viewModel, stars: $viewModel.stars)
             ButtonPlay(
                 viewModel: $viewModel,
-                Moves: $moves,
-                gridColumns: 5,
-                greenCellPosition: 4
+                Moves: $moves
             )
             ButtonRestart(viewModel: $viewModel, Moves: $moves)
-            Buttons(Moves: $moves)
+            Buttons(viewModel: $viewModel, Moves: $moves)
             Historic(Moves: $moves)
             
         }
@@ -44,7 +42,7 @@ struct Game: View {
     
     var body: some View{
         LazyVGrid(columns: Array(repeating: GridItem(.fixed(100), spacing: 5), count: 5), spacing: 5) {
-            ForEach(0..<5) { index in
+            ForEach(0..<viewModel.grid) { index in
                 Rectangle()
                     .frame(width: 100, height: 100)
                     .foregroundStyle(color(index: index))
@@ -65,7 +63,8 @@ struct Game: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 100, height: 100, alignment: .center)
                 .offset(
-                    x: 105*Double(viewModel.tartaruga.x)
+                    x: 105*Double(viewModel.tartaruga.x),
+                    y: 105*Double(viewModel.tartaruga.y)
                 )
         }
         .clipped()
@@ -73,10 +72,10 @@ struct Game: View {
     }
     
     func color(index: Int) -> Color {
-        if [0, 1, 2, 3].contains(index) {
+        if viewModel.yellowColor.contains(index) {
             return Color.yellow.opacity(0.23)
         }
-        else if [4].contains(index) {
+        else if viewModel.greenCellPosition == index {
             return Color.green
         }
         else {
@@ -90,8 +89,6 @@ struct ButtonPlay: View {
     
     @Binding var viewModel: TartarugaViewModel
     @Binding var Moves: [Move]
-    let gridColumns: Int
-    let greenCellPosition: Int
     
     
     var body: some View {
@@ -126,8 +123,20 @@ struct ButtonPlay: View {
                     }
                     
                 }
+                else if move == .up && viewModel.tartaruga.y > 0 {
+                    withAnimation(.linear(duration: 1)) {
+                        viewModel.tartaruga.y += move.dy
+                    }
+                    
+                }
+                else if move == .down && viewModel.tartaruga.y < (viewModel.grid - 1) {
+                    withAnimation(.linear(duration: 1)) {
+                        viewModel.tartaruga.y += move.dy
+                    }
+                    
+                }
                 
-                viewModel.checkWin(gridColumns: gridColumns, greenCellPosition: greenCellPosition)
+                viewModel.checkWin()
                 
                 if viewModel.standsInStar() {
                     viewModel.tartaruga.estrelas += 1
@@ -141,11 +150,13 @@ struct ButtonPlay: View {
 
 struct Buttons: View {
     
+    @Binding var viewModel: TartarugaViewModel
     @Binding var Moves: [Move]
+    
     
     var body: some View {
         VStack(spacing: 0) {
-            ForEach([Move.right, Move.left], id: \.self) { move in
+            ForEach(viewModel.moveOptions, id: \.self) { move in
                 Button(action: {
                     Moves.append(move)
                 }, label: {
@@ -233,6 +244,6 @@ struct SheetView: View {
 
 #Preview {
     NavigationStack{
-        Fase(viewModel: .constant(TartarugaViewModel(name: "Fase 1", stars: [2,3,4])))
+        Fase(viewModel: .constant(TartarugaViewModel(name: "Fase 1", grid: 5, moveOptions: [.left, .right], stars: [2,3,4], yellowColor: [2, 3, 5], greenCellPosition: 4)))
     }
 }

@@ -10,17 +10,53 @@ import SwiftUI
 struct SelecaoFase: View {
         
     @State var stages = [
-        TartarugaViewModel(name: "Fase 1", stars: [2, 3, 4, 5, 18]),
-        TartarugaViewModel(name: "Fase 2", stars: [2, 3, 4, 5, 18]),
-        TartarugaViewModel(name: "Fase 3", stars: [2, 3, 4, 5, 18]),
-        TartarugaViewModel(name: "Fase 4", stars: [2, 3, 4, 5, 18]),
-        TartarugaViewModel(name: "Fase 5", stars: [2, 3, 4, 5, 18])
+        TartarugaViewModel(
+            name: "Fase 1",
+            grid: 5,
+            moveOptions: [.right, .left],
+            stars: [2, 3, 4],
+            yellowColor: [2, 3, 5], 
+            greenCellPosition: 4
+        ),
+        TartarugaViewModel(
+            name: "Fase 2",
+            grid: 15,
+            moveOptions: Move.allCases,
+            stars: [5, 8, 13],
+            yellowColor: [12, 11, 7],
+            greenCellPosition: 10
+        ),
+        TartarugaViewModel(
+            name: "Fase 3",
+            grid: 20,
+            moveOptions: Move.allCases,
+            stars: [6, 10, 19],
+            yellowColor: [2, 13, 16],
+            greenCellPosition: 20
+        ),
+        TartarugaViewModel(
+            name: "Fase 4",
+            grid: 25,
+            moveOptions: Move.allCases,
+            stars: [1, 20, 14],
+            yellowColor: [2, 22, 15],
+            greenCellPosition: 25
+        ),
+        TartarugaViewModel(
+            name: "Fase 5",
+            grid: 25,
+            moveOptions: Move.allCases,
+            stars: [7, 21, 11],
+            yellowColor: [2, 13, 24],
+            greenCellPosition: 25
+            
+        )
     ]
     
     func nextView(from stageName: String) -> some View {
         switch stageName {
         case "Fase 1":
-            return AnyView(Fase1(viewModel: $stages[0]))
+            return AnyView(Fase(viewModel: $stages[0]))
 //        case "Fase 2":
 //            return AnyView(Fase2(viewModel: $stages[1]))
 //        case "Fase 3":
@@ -30,13 +66,21 @@ struct SelecaoFase: View {
 //        case "Fase 5":
 //            return AnyView(Fase5(viewModel: $stages[4]))
         case "Fase 2":
-            return AnyView(Fase2())
+            return AnyView(
+                Fase(viewModel: $stages[1])
+            )
         case "Fase 3":
-            return AnyView(Fase3())
+            return AnyView(
+                Fase(viewModel: $stages[2])
+            )
         case "Fase 4":
-            return AnyView(Fase4())
+            return AnyView(
+                Fase(viewModel: $stages[3])
+            )
         case "Fase 5":
-            return AnyView(Fase5())
+            return AnyView(
+                Fase(viewModel: $stages[4])
+            )
         default:
             return AnyView(Homepage(nome: "Arley"))
         }

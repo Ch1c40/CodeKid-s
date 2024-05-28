@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Observation
 
 @Observable
 class TartarugaViewModel: Identifiable {
@@ -14,13 +15,32 @@ class TartarugaViewModel: Identifiable {
     
     var name: String
     
+    let grid: Int
+    
+    var moveOptions: [Move] = [.right, .left, .up, .down]
+    
     var tartaruga = Tartaruga(picture: "tartaruga", estrelas: 0)
+    
+    var initialStars: [Int]
     
     var stars: [Int]
     
-    init(name: String, stars: [Int]) {
+    var greenCellPosition: Int
+    
+    var yellowColor: [Int]
+    
+    var task: Task<Void, Never>?
+    
+    var win: Bool = false
+    
+    init(name: String, grid: Int, moveOptions: [Move], stars: [Int], yellowColor: [Int] ,greenCellPosition: Int) {
         self.name = name
+        self.initialStars = stars
+        self.grid = grid
         self.stars = stars
+        self.greenCellPosition = greenCellPosition
+        self.moveOptions = moveOptions
+        self.yellowColor = yellowColor
     }
     
     /*
@@ -39,15 +59,30 @@ class TartarugaViewModel: Identifiable {
         }
         return false
     }
+    func reset() {
+        self.stars = initialStars
+        self.tartaruga = Tartaruga(picture: "tartaruga", estrelas: 0)
+        self.task?.cancel()
+    }
+    
+    func checkWin() {
+        let lineGreen = Int(greenCellPosition / grid)
+        let columnGreen = Int(greenCellPosition % grid)
+        
+        if tartaruga.x == columnGreen && tartaruga.y == lineGreen {
+            win = true
+        }
+    }
 }
+
 
 /*
  
-↑
-y
+ ↑
+ y
  x ->
  
-   0 1 2 3
+ 0 1 2 3
  0 a b c d
  1 e f g h
  2 i j k l
