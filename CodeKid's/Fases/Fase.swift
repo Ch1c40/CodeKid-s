@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 
 struct Fase: View {
@@ -21,7 +22,7 @@ struct Fase: View {
                 .ignoresSafeArea()
                 .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity)
             
-            Game(viewModel: $viewModel, stars: $viewModel.stars)
+            Game(viewModel: $viewModel, stars: $viewModel.stars).border(Color.black)
             ButtonPlay(
                 viewModel: $viewModel,
                 Moves: $moves
@@ -67,6 +68,18 @@ struct Game: View {
                     y: 105*Double(viewModel.tartaruga.y)
                 )
         }
+        .overlay(alignment: .topLeading){
+            ForEach(viewModel.obstaculos) { obstaculo in
+                Image(obstaculo.picture)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 100, height: 100)
+                    .offset(
+                        x: 105 * Double(obstaculo.x),
+                        y: 105 * Double(obstaculo.y)
+                    )
+            }
+        }
         .clipped()
         .fixedSize(horizontal: true, vertical: true)
     }
@@ -92,7 +105,7 @@ struct ButtonPlay: View {
     
     
     var body: some View {
-        Button(action: play) {
+        Button(action: test) {
             Image(systemName: "play.circle.fill")
                 .foregroundStyle(.tint)
                 .font(.system(size: 60))
@@ -105,6 +118,49 @@ struct ButtonPlay: View {
         
     }
     
+    func test() {
+        viewModel.task = Task {
+            for move in Moves {
+                
+                if Task.isCancelled { return }
+                
+                if move == .left && 
+                    viewModel.tartaruga.x > 0  &&
+                    viewModel.obstaculos.allSatisfy( { obstaculo in viewModel.tartaruga.x - 1 != obstaculo.x  })
+                {
+                    withAnimation(.linear(duration: 1)) {
+                        viewModel.tartaruga.x += move.dx
+                    }
+                }
+                else if move == .right && viewModel.tartaruga.x < 4 && viewModel.obstaculos.allSatisfy({ obstaculo in viewModel.tartaruga.x + 1 != obstaculo.x}) {
+                    withAnimation(.linear(duration: 1)) {
+                        viewModel.tartaruga.x += move.dx
+                    }
+                    
+                }
+                else if move == .up && viewModel.tartaruga.y > 0 && viewModel.obstaculos.allSatisfy({ obstaculo in viewModel.tartaruga.y - 1 != obstaculo.y}) {
+                    withAnimation(.linear(duration: 1)) {
+                        viewModel.tartaruga.y += move.dy
+                    }
+                    
+                }
+                else if move == .down && viewModel.tartaruga.y < 4 && viewModel.obstaculos.allSatisfy({obstaculo in viewModel.tartaruga.y + 1 != obstaculo.y}) {
+                    withAnimation(.linear(duration: 1)) {
+                        viewModel.tartaruga.y += move.dy
+                    }
+                    
+                }
+                
+                viewModel.checkWin()
+                
+                if viewModel.standsInStar() {
+                    viewModel.tartaruga.estrelas += 1
+                }
+                
+                try? await Task.sleep(for: .seconds(1))
+            }
+        }
+    }
     func play() {
         viewModel.task = Task {
             for move in Moves {
@@ -229,7 +285,7 @@ struct ButtonRestart: View {
 
 struct SheetView: View {
     @Environment(\.dismiss) var dismiss
-
+    
     var body: some View {
         Button("Parabéns você completou a fase 1") {
             dismiss()
@@ -244,6 +300,6 @@ struct SheetView: View {
 
 #Preview {
     NavigationStack{
-        Fase(viewModel: .constant(TartarugaViewModel(name: "Fase 1", grid: 5, moveOptions: [.left, .right], stars: [2,3,4], yellowColor: [2, 3, 5], greenCellPosition: 4)))
+        Fase(viewModel: .constant(TartarugaViewModel(name: "Fase 1", grid: 5, moveOptions: [.left, .right], stars: [2,3,4], yellowColor: [2, 3, 5], greenCellPosition: 4, obstaculo:[Obstaculo(x: 0, y: 2, picture: "obstaculo")])))
     }
 }

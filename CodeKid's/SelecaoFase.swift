@@ -16,7 +16,8 @@ struct SelecaoFase: View {
             moveOptions: [.right, .left],
             stars: [2, 3, 4],
             yellowColor: [2, 3, 5], 
-            greenCellPosition: 4
+            greenCellPosition: 4,
+            obstaculo: [Obstaculo(x: 20, y: 0, picture: "obstaculo1")]
         ),
         TartarugaViewModel(
             name: "Fase 2",
@@ -24,7 +25,10 @@ struct SelecaoFase: View {
             moveOptions: Move.allCases,
             stars: [5, 8, 13],
             yellowColor: [12, 11, 7],
-            greenCellPosition: 10
+            greenCellPosition: 10,
+            obstaculo: [Obstaculo(x: 0, y: 2, picture: "obstaculo1"),
+                        Obstaculo(x: 0, y: 4, picture: "obstaculo2"),
+                        Obstaculo(x: 0, y: 3, picture: "obstaculo3")]
         ),
         TartarugaViewModel(
             name: "Fase 3",
@@ -32,7 +36,8 @@ struct SelecaoFase: View {
             moveOptions: Move.allCases,
             stars: [6, 10, 19],
             yellowColor: [2, 13, 16],
-            greenCellPosition: 20
+            greenCellPosition: 8,
+            obstaculo: [Obstaculo(x: 2, y: 3, picture: "obstaculo2")]
         ),
         TartarugaViewModel(
             name: "Fase 4",
@@ -40,7 +45,8 @@ struct SelecaoFase: View {
             moveOptions: Move.allCases,
             stars: [1, 20, 14],
             yellowColor: [2, 22, 15],
-            greenCellPosition: 25
+            greenCellPosition: 13,
+            obstaculo: [Obstaculo(x: 4, y: 4, picture: "obstaculo3")]
         ),
         TartarugaViewModel(
             name: "Fase 5",
@@ -48,7 +54,8 @@ struct SelecaoFase: View {
             moveOptions: Move.allCases,
             stars: [7, 21, 11],
             yellowColor: [2, 13, 24],
-            greenCellPosition: 25
+            greenCellPosition: 12,
+            obstaculo: [Obstaculo(x: 0, y: 2, picture: "obstaculo3")]
             
         )
     ]
@@ -56,15 +63,9 @@ struct SelecaoFase: View {
     func nextView(from stageName: String) -> some View {
         switch stageName {
         case "Fase 1":
-            return AnyView(Fase(viewModel: $stages[0]))
-//        case "Fase 2":
-//            return AnyView(Fase2(viewModel: $stages[1]))
-//        case "Fase 3":
-//            return AnyView(Fase3(viewModel: $stages[2]))
-//        case "Fase 4":
-//            return AnyView(Fase4(viewModel: $stages[3]))
-//        case "Fase 5":
-//            return AnyView(Fase5(viewModel: $stages[4]))
+            return AnyView(
+                Fase(viewModel: $stages[0])
+            )
         case "Fase 2":
             return AnyView(
                 Fase(viewModel: $stages[1])

@@ -21,6 +21,8 @@ class TartarugaViewModel: Identifiable {
     
     var tartaruga = Tartaruga(picture: "tartaruga", estrelas: 0)
     
+    var obstaculos: [Obstaculo]
+    
     var initialStars: [Int]
     
     var stars: [Int]
@@ -33,7 +35,15 @@ class TartarugaViewModel: Identifiable {
     
     var win: Bool = false
     
-    init(name: String, grid: Int, moveOptions: [Move], stars: [Int], yellowColor: [Int] ,greenCellPosition: Int) {
+    init(
+        name: String,
+        grid: Int,
+        moveOptions: [Move],
+        stars: [Int],
+        yellowColor: [Int] ,
+        greenCellPosition: Int,
+        obstaculo: [Obstaculo]
+    ) {
         self.name = name
         self.initialStars = stars
         self.grid = grid
@@ -41,6 +51,7 @@ class TartarugaViewModel: Identifiable {
         self.greenCellPosition = greenCellPosition
         self.moveOptions = moveOptions
         self.yellowColor = yellowColor
+        self.obstaculos = obstaculo
     }
     
     /*
@@ -66,8 +77,8 @@ class TartarugaViewModel: Identifiable {
     }
     
     func checkWin() {
-        let lineGreen = Int(greenCellPosition / grid)
-        let columnGreen = Int(greenCellPosition % grid)
+        let lineGreen = Int(greenCellPosition / 5) // 5 é o tamanho da linha (quantidade de grid item)
+        let columnGreen = Int(greenCellPosition % 5)
         
         if tartaruga.x == columnGreen && tartaruga.y == lineGreen {
             win = true
