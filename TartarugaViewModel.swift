@@ -11,7 +11,7 @@ import Observation
 @Observable
 class TartarugaViewModel: Identifiable {
     
-    let id: UUID = UUID()
+    let id: Int
     
     var name: String
     
@@ -35,7 +35,9 @@ class TartarugaViewModel: Identifiable {
     
     var win: Bool = false
     
+    
     init(
+        id: Int,
         name: String,
         grid: Int,
         moveOptions: [Move],
@@ -44,6 +46,7 @@ class TartarugaViewModel: Identifiable {
         greenCellPosition: Int,
         obstaculo: [Obstaculo]
     ) {
+        self.id = id
         self.name = name
         self.initialStars = stars
         self.grid = grid

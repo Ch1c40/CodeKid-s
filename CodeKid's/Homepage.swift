@@ -26,7 +26,7 @@ struct Homepage: View {
                     .font(.system(size: 48))
                     .bold()
                     .padding([.bottom], -20)
-                VStack{
+                VStack {
                     NavigationLink {
                         SelecaoFase()
                     } label: {

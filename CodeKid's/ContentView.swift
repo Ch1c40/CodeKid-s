@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @StateObject var appState = AppState()
+
     @State var showing: Bool = false
     
     @State var timer: Timer! // Optional
@@ -45,6 +47,7 @@ struct ContentView: View {
                 }
             }
         }
+        .environmentObject(appState)
     }
 }
 

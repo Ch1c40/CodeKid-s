@@ -22,7 +22,7 @@ struct Fase: View {
                 .ignoresSafeArea()
                 .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity)
             
-            Game(viewModel: $viewModel, stars: $viewModel.stars).border(Color.black)
+            Game(viewModel: $viewModel, stars: $viewModel.stars)
             ButtonPlay(
                 viewModel: $viewModel,
                 Moves: $moves
@@ -82,6 +82,11 @@ struct Game: View {
         }
         .clipped()
         .fixedSize(horizontal: true, vertical: true)
+        .overlay {
+            if viewModel.win {
+                SheetView(id: viewModel.id)
+            }
+        }
     }
     
     func color(index: Int) -> Color {
@@ -103,7 +108,6 @@ struct ButtonPlay: View {
     @Binding var viewModel: TartarugaViewModel
     @Binding var Moves: [Move]
     
-    
     var body: some View {
         Button(action: test) {
             Image(systemName: "play.circle.fill")
@@ -112,10 +116,6 @@ struct ButtonPlay: View {
         }
         .padding(50)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
-        .sheet(isPresented: $viewModel.win) {
-            SheetView()
-        }
-        
     }
     
     func test() {
@@ -283,23 +283,11 @@ struct ButtonRestart: View {
     }
 }
 
-struct SheetView: View {
-    @Environment(\.dismiss) var dismiss
-    
-    var body: some View {
-        Button("Parabéns você completou a fase 1") {
-            dismiss()
-        }
-        .font(.title)
-        .padding()
-        .background(.black)
-    }
-}
 
 
 
 #Preview {
     NavigationStack{
-        Fase(viewModel: .constant(TartarugaViewModel(name: "Fase 1", grid: 5, moveOptions: [.left, .right], stars: [2,3,4], yellowColor: [2, 3, 5], greenCellPosition: 4, obstaculo:[Obstaculo(x: 0, y: 2, picture: "obstaculo")])))
+        Fase(viewModel: .constant(TartarugaViewModel(id: 1, name: "Fase 1", grid: 5, moveOptions: [.left, .right], stars: [2,3,4], yellowColor: [2, 3, 5], greenCellPosition: 4, obstaculo:[Obstaculo(x: 0, y: 2, picture: "obstaculo")])))
     }
 }

@@ -1,15 +1,17 @@
 {
   "images" : [
     {
+      "filename" : "praia.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "lopez-robin-apax4M-4kFI-unsplash.jpg",
+      "filename" : "praia@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "praia@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
